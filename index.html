@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flower For You | Forever & Always</title>
+    <meta name="description" content="A modern, breathtaking digital flower gift crafted with love and forever blooms. Created by ZennCode.">
+
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Sky & Atmosphere -->
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="aurora-glow"></div>
+
+    <!-- Canvas for Procedural Blooming Bouquet -->
+    <canvas id="flowerCanvas"></canvas>
+
+    <!-- =====================================================================
+         STAGE 1: CINEMATIC GIFT BOX UNWRAPPING
+         ===================================================================== -->
+    <div class="gift-intro-stage" id="giftIntroStage">
+        <div class="intro-content">
+            <div class="intro-badge">
+                <span>✨ A Special Delivery</span>
+            </div>
+            <h1 class="intro-title" id="introRecipientHeading">Flower For You</h1>
+            <p class="intro-subtitle">Flowers that never wither, blooming forever just for you.</p>
+
+            <div class="gift-box-wrapper" id="giftBoxWrapper">
+                <div class="gift-box-glow"></div>
+                <div class="gift-box" id="giftBox">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-knot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-open-gift" id="btnOpenGift">
+                <span>Tap to Open Your Flowers</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+
+            <!-- Created by ZennCode Intro Footer -->
+            <div class="creator-badge intro-footer-credit">
+                <span>Created by</span> <strong>ZennCode</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 2: MAIN EXPERIENCE UI (HEADER, ACTIONS, DOCK)
+         ===================================================================== -->
+    <main class="app-container" id="appContainer">
+
+        <!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="brand-badge">
+                <span class="brand-heart">♥</span>
+                <span class="brand-text" id="navRecipientName">Flower For You</span>
+            </div>
+
+            <div class="nav-actions">
+                <!-- Sound Toggle -->
+                <button class="btn-glass-icon" id="btnSoundToggle" title="Toggle Romantic Music" aria-label="Toggle Sound">
+                    <div class="audio-bars">
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                    </div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Interaction Prompt Hint -->
+        <div class="interaction-hint" id="interactionHint">
+            <span>✨ Tap any flower blossom to reveal a secret reason why I love you</span>
+        </div>
+
+        <!-- Bottom Right Corner Credit -->
+        <footer class="app-bottom-corner-credit">
+            <div class="creator-badge">
+                <span>Created by</span> <strong>ZennCode</strong>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- =====================================================================
+         MODAL 1: FLOWER DETAILS & "REASON WHY I LOVE YOU" POPUP
+         ===================================================================== -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <div class="flower-popup-card" id="flowerPopupCard">
+        <div class="popup-flower-icon" id="popupFlowerIcon">🌹</div>
+        <h3 class="popup-title" id="popupFlowerName">Grand Velvet Rose</h3>
+        <p class="popup-meaning" id="popupFlowerMeaning">"My eternal, unconditional love for you"</p>
+        
+        <div class="popup-reason-box">
+            <div class="popup-reason-label">Why You Have My Heart</div>
+            <p class="popup-reason-text" id="popupFlowerReason">You are the sweetest part of every single day.</p>
+        </div>
+
+        <button class="popup-close-btn" id="btnPopupClose">Keep in My Heart ♥</button>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 2: WAX-SEALED LOVE LETTER & ENVELOPE
+         ===================================================================== -->
+    <div class="letter-modal" id="letterModal">
+        <div class="envelope-container">
+            <!-- Closed Envelope View -->
+            <div class="envelope-closed" id="envelopeClosed">
+                <div class="wax-seal" id="waxSeal" title="Break seal to open letter">
+                    <span>♥</span>
+                </div>
+                <div class="wax-seal-label">Tap Wax Seal to Open</div>
+            </div>
+
+            <!-- Unfolded Letter View -->
+            <article class="letter-paper" id="letterPaper">
+                <button class="letter-close-btn" id="btnLetterClose" title="Close letter">✕</button>
+                <div class="letter-header">
+                    <span class="letter-date" id="letterDisplayDate">Forever & Always</span>
+                    <span style="color: #c9184a; font-size: 1.2rem;">❦</span>
+                </div>
+
+                <h2 class="letter-salutation" id="letterDisplaySalutation">My Dearest Love,</h2>
+                <div class="letter-body" id="letterDisplayBody">
+                    From the moment you came into my life, everything turned brighter, warmer, and so much more meaningful. 
+
+                    These flowers are a reminder that just like them, my admiration, care, and love for you continue to grow every single day. No matter where life takes us, you will always be my favorite dream come true.
+
+                    Thank you for being my peace, my smile, and my greatest blessing.
+                </div>
+
+                <div class="letter-signature" id="letterDisplaySignature">
+                    Yours Forever ♥
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-msg" id="toastMsg">Link copied to clipboard!</div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="flowers-canvas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
